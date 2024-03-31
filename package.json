@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "DB form for HAI Berkat Contract Form",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -18,6 +19,8 @@
   "homepage": "https://github.com/Mysues/db-form-hai#readme",
   "dependencies": {
     "dotenv": "^16.4.5",
-    "mysql2": "^3.9.3"
+    "express": "^4.19.2",
+    "mysql2": "^3.9.3",
+    "nodemon": "^3.1.0"
   }
 }
