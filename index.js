@@ -6,7 +6,7 @@ const app = express();
 app.get("/manufacturer",async (req,res)=>{
     const data = await getCarManufacturerAll()
     
-    res.send(data);
+    res.send(data.map(car => car.manufacturer));
 })
 
 app.listen(8080,()=>{

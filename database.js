@@ -16,7 +16,7 @@ export async function getCarManufacturerAll(){
     FROM cars
     `
     )
-    return rows.map(car => car.manufacturer)
+    return rows
 }
 
 export async function getCarModel(manufacturer){
