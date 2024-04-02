@@ -10,42 +10,42 @@ const pool = mysql.createPool({
   database: process.env.MYSQL_DATABASE
 }).promise()
 
-export async function getCarVendorAll(){
+export async function getCarManufacturerAll(){
     const [rows] = await pool.query(`
-    SELECT DISTINCT vendor
+    SELECT DISTINCT manufacturer
     FROM cars
     `
     )
-    return rows
+    return rows.map(car => car.manufacturer)
 }
 
-export async function getCarModel(vendor){
+export async function getCarModel(manufacturer){
     const [rows] = await pool.query(`
     SELECT DISTINCT model 
     FROM cars 
-    WHERE vendor = ?
-    `,[vendor])
+    WHERE manufacturer = ?
+    `,[manufacturer])
     return rows
 }
 
-export async function getCarRegisterNumber(vendor,model){
+export async function getCarRegisterNumber(manufacturer,model){
     const [rows] = await pool.query(`
     SELECT register_number 
     FROM cars 
-    WHERE vendor = ?
+    WHERE manufacturer = ?
     AND model = ?
-    `,[vendor,model])
+    `,[manufacturer,model])
     return rows
 }
 
-export async function getCarID(vendor,model,registerNumber){
+export async function getCarID(manufacturer,model,registerNumber){
     const [rows] = await pool.query(`
     SELECT car_id 
     FROM cars 
-    WHERE vendor = ?
+    WHERE manufacturer = ?
     AND model = ?
     AND register_number = ?
-    `,[vendor,model,registerNumber])
+    `,[manufacturer,model,registerNumber])
     return rows
 }
 

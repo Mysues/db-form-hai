@@ -1,10 +1,10 @@
 import express from 'express'
-import {getCarVendorAll} from './database.js'
+import {getCarManufacturerAll} from './database.js'
 
 const app = express();
 
-app.get("/vendors",async (req,res)=>{
-    const data = await getCarVendorAll()
+app.get("/manufacturer",async (req,res)=>{
+    const data = await getCarManufacturerAll()
     
     res.send(data);
 })
