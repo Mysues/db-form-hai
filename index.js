@@ -1,7 +1,11 @@
 import express from 'express'
-import {getCarManufacturerAll,getCarModel,getCarRegisterNumber,getCarID} from './database.js'
+import {getCarManufacturerAll,getCarModel,getCarRegisterNumber,getCarID,createUserProfile} from './database.js'
+import bodyParser from 'body-parser';
 
 const app = express();
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
 
 app.get("/car_manufacturer",async (req,res)=>{
     const manufacturer = await getCarManufacturerAll()
@@ -33,7 +37,11 @@ app.get("/car_id",async (req,res)=>{
     res.send(car_id[0]);
 })
 
-
+app.post("/create_user",async (req,res)=>{
+    const userProfile = await req.body;
+    createUserProfile(userProfile);
+    res.send(userProfile);
+})
 
 app.listen(8080,()=>{
     console.log("Server is running");
