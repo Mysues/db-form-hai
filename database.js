@@ -31,3 +31,7 @@ export function getCarID(manufacturer,model,registerNumber){
 export function createUserProfile(userProfile){
     return userDb.createUserProfile(pool,userProfile);
 }
+
+export function checkUserProfile(userIc){
+    return userDb.checkUserProfile(pool,userIc);
+}

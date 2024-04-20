@@ -55,3 +55,12 @@ export async function createUserProfile(pool,userProfile){
 
     return rows
 }
+
+export async function checkUserProfile(pool,userIC){
+    const [rows] = await pool.query(`
+    SELECT user_id 
+    FROM users
+    WHERE ic = ?
+    `,[userIC]);
+    return rows;
+}
