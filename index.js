@@ -2,15 +2,24 @@ import express from 'express'
 import * as db from './database.js'
 import bodyParser from 'body-parser';
 
-const {
-    getCarManufacturerAll,
-    getCarModel,
-    getCarRegisterNumber,
-    getCarID,
-    createUserProfile
-} = db;
+import cors from 'cors'
+
+// const {
+//     getCarManufacturerAll,
+//     getCarModel,
+//     getCarRegisterNumber,
+//     getCarID,
+//     createUserProfile
+// } = db; //acui comment
 
 const app = express();
+
+// Enable CORS for all routes
+//app.use(cors()); 
+
+app.use(cors({
+    origin: 'http://127.0.0.1:5500' // Allow requests from this origin only
+})); // acui add
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));

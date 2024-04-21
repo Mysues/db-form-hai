@@ -1,7 +1,7 @@
 export async function getCarManufacturerAll(pool){
     const [rows] = await pool.query(`
     SELECT DISTINCT manufacturer
-    FROM cars
+    FROM car_rental
     `
     )
     return rows
@@ -10,7 +10,7 @@ export async function getCarManufacturerAll(pool){
 export async function getCarModel(pool,manufacturer){
     const [rows] = await pool.query(`
     SELECT DISTINCT model 
-    FROM cars 
+    FROM car_rental 
     WHERE manufacturer = ?
     `,[manufacturer])
     return rows
@@ -19,7 +19,7 @@ export async function getCarModel(pool,manufacturer){
 export async function getCarRegisterNumber(pool,manufacturer,model){
     const [rows] = await pool.query(`
     SELECT register_number 
-    FROM cars 
+    FROM car_rental 
     WHERE manufacturer = ?
     AND model = ?
     `,[manufacturer,model])
@@ -29,7 +29,7 @@ export async function getCarRegisterNumber(pool,manufacturer,model){
 export async function getCarID(pool,manufacturer,model,registerNumber){
     const [rows] = await pool.query(`
     SELECT car_id 
-    FROM cars 
+    FROM car_rental 
     WHERE manufacturer = ?
     AND model = ?
     AND register_number = ?
