@@ -12,6 +12,13 @@ const pool = mysql.createPool({
     database: process.env.MYSQL_DATABASE
 }).promise()
 
+const pool2 = mysql.createPool({
+    host: process.env.MYSQL_HOST2,
+    user: process.env.MYSQL_USER2,
+    password: process.env.MYSQL_PASSWORD2,
+    database: process.env.MYSQL_DATABASE2
+}).promise() // acui add for create user
+ 
 export function getCarManufacturerAll(){
     return carDb.getCarManufacturerAll(pool);
 }
@@ -30,4 +37,8 @@ export function getCarID(manufacturer,model,registerNumber){
 
 export function createUserProfile(userProfile){
     return userDb.createUserProfile(pool,userProfile);
+}
+
+export function checkUserProfile(userIc){
+    return userDb.checkUserProfile(pool,userIc);
 }

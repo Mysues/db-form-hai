@@ -60,6 +60,13 @@ app.post("/create_user",async (req,res)=>{
     res.send(userProfile);
 })
 
+app.post("/check_user",async (req,res)=>{
+    const userIc = req.body.ic;
+    const userId = await db.checkUserProfile(userIc);
+
+    res.send(userId[0]);
+})
+
 app.listen(8080,()=>{
     console.log("Server is running");
 })
