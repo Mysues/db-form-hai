@@ -36,9 +36,13 @@ export function getCarID(manufacturer,model,registerNumber){
 }
 
 export function createUserProfile(userProfile){
-    return userDb.createUserProfile(pool,userProfile);
+    return userDb.createUserProfile(pool2,userProfile);
 }
 
 export function checkUserProfile(userIc){
-    return userDb.checkUserProfile(pool,userIc);
+    return userDb.checkUserProfile(pool2,userIc);
 }
+
+export function getUserProfile(userIc){
+    return userDb.getUserProfile(pool2,userIc);
+} // acui add

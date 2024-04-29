@@ -59,8 +59,19 @@ export async function createUserProfile(pool,userProfile){
 export async function checkUserProfile(pool,userIC){
     const [rows] = await pool.query(`
     SELECT user_id 
-    FROM users
+    FROM user_rental 
     WHERE ic = ?
     `,[userIC]);
-    return rows;
+    return rows; // change user to user_rental
 }
+
+export async function getUserProfile(pool){
+    const [rows] = await pool.query(`
+    SELECT DISTINCT
+    name,
+    phone
+    FROM user_rental
+    `
+    )
+    return rows
+} // acui add function

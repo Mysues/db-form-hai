@@ -65,7 +65,16 @@ app.post("/check_user",async (req,res)=>{
     const userId = await db.checkUserProfile(userIc);
 
     res.send(userId[0]);
-})
+}) // acui change from post to get
+
+
+app.get("/get_user",async (req,res)=>{
+    const userIc = req.body.ic;
+    const userId = await db.getUserProfile(userIc);
+
+    res.send(userId[0]);
+}) // acui add function
+
 
 app.listen(8080,()=>{
     console.log("Server is running");
